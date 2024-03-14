@@ -30,30 +30,29 @@ const urlList = [
 function create() {
   // The loop is for the creation of rows
   for (i = 0; i < urlList.length / 4; i++) {
-    const rowDiv = $("<div>")
-      .addClass("row")
-      .attr("id", `row-${i + 1}`);
-    $(".container-fluid").append(rowDiv);
-
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("row");
+    rowDiv.id = `row-${i + 1}`;
+    mainContainer = $(".container-fluid")[0];
+    mainContainer.appendChild(rowDiv);
+    // The loop is for the creation of img
     for (j = 0; j < 4; j++) {
-      const imgDiv = $("<div>")
-        .addClass("img-div col-6 col-sm-3")
-        .appendTo(rowDiv);
+      const imgDiv = document.createElement("div");
+      imgDiv.classList.add("img-div", "col-6", "col-sm-3");
 
-      const checkbox = $("<input>")
-        .attr("type", "checkbox")
-        .attr("id", `row-${i + 1}-img-${j + 1}`); // Unique ID for each checkbox
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = `row-${i + 1}-img-${j + 1}`; // Unique ID for each checkbox
 
-      const label = $("<label>")
-        .attr("for", `row-${i + 1}-img-${j + 1}`) // Match the ID of the checkbox
-        .css("background-image", `url('${urlList[i * 4 + j]}')`); // Set background image
+      const label = document.createElement("label");
+      label.htmlFor = `row-${i + 1}-img-${j + 1}`; // Match the ID of the checkbox
+      label.style.backgroundImage = `url('${urlList[i * 4 + j]}')`; // Set background image
 
-      imgDiv.append(checkbox, label);
+      imgDiv.appendChild(checkbox);
+      imgDiv.appendChild(label);
 
       // Append the image box to the container
-      $(`#row-${i + 1}`).append(imgDiv);
-
-      // Check that there are images left to add
+      document.getElementById(`row-${i + 1}`).appendChild(imgDiv);
       if (i * 4 + j + 2 > urlList.length) {
         return;
       }
