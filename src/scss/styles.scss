@@ -1,0 +1,35 @@
+body {
+  background-color: rgb(235, 240, 242);
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 3px solid white;
+  object-fit: contain;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label {
+  border: 3px solid red;
+}
+
+.container-fluid {
+  margin: 10px 0;
+}
+
+.img-div {
+  margin-top: 0.4rem;
+}
+
+.row {
+  margin: 0 10px;
+}
