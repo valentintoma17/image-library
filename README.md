@@ -15,7 +15,13 @@ cd image-library
 npm install
 ```
 
-## Run
+## Build
+
+```
+grunt
+```
+
+## Watch mode
 
 ```
 grunt watch
