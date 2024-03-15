@@ -728,12 +728,7 @@ progress {
 }
 
 .container,
-.container-fluid,
-.container-xxl,
-.container-xl,
-.container-lg,
-.container-md,
-.container-sm {
+.container-fluid {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
@@ -743,35 +738,11 @@ progress {
   margin-left: auto;
 }
 
-@media (min-width: 576px) {
-  .container-sm, .container {
-    max-width: 540px;
-  }
-}
-@media (min-width: 768px) {
-  .container-md, .container-sm, .container {
-    max-width: 720px;
-  }
-}
-@media (min-width: 1024px) {
-  .container-lg, .container-md, .container-sm, .container {
-    max-width: 960px;
-  }
-}
-@media (min-width: 1416px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
-    max-width: 1140px;
-  }
-}
-.container-xl, .container-lg, .container-md, .container-sm, .container {
-  max-width: 1320px;
-}
-
 :root {
   --bs-breakpoint-xs: 0;
   --bs-breakpoint-sm: 576px;
-  --bs-breakpoint-md: 768px;
-  --bs-breakpoint-lg: 1024px;
+  --bs-breakpoint-md: 785px;
+  --bs-breakpoint-lg: 1041px;
   --bs-breakpoint-xl: 1416px;
 }
 
@@ -1170,7 +1141,7 @@ progress {
     --bs-gutter-y: 3rem;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .col-md {
     flex: 1 0 0%;
   }
@@ -1339,7 +1310,7 @@ progress {
     --bs-gutter-y: 3rem;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .col-lg {
     flex: 1 0 0%;
   }
@@ -1880,13 +1851,13 @@ progress {
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 784.98px) {
   .table-responsive-md {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 }
-@media (max-width: 1023.98px) {
+@media (max-width: 1040.98px) {
   .table-responsive-lg {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -3240,7 +3211,7 @@ textarea.form-control-lg {
     left: auto;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .dropdown-menu-md-start {
     --bs-position: start;
   }
@@ -3256,7 +3227,7 @@ textarea.form-control-lg {
     left: auto;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .dropdown-menu-lg-start {
     --bs-position: start;
   }
@@ -3699,12 +3670,7 @@ textarea.form-control-lg {
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
 .navbar > .container,
-.navbar > .container-fluid,
-.navbar > .container-sm,
-.navbar > .container-md,
-.navbar > .container-lg,
-.navbar > .container-xl,
-.navbar > .container-xxl {
+.navbar > .container-fluid {
   display: flex;
   flex-wrap: inherit;
   align-items: center;
@@ -3847,7 +3813,7 @@ textarea.form-control-lg {
     overflow-y: visible;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .navbar-expand-md {
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -3894,7 +3860,7 @@ textarea.form-control-lg {
     overflow-y: visible;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .navbar-expand-lg {
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -4818,7 +4784,7 @@ textarea.form-control-lg {
     border-left-width: var(--bs-list-group-border-width);
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .list-group-horizontal-md {
     flex-direction: row;
   }
@@ -4842,7 +4808,7 @@ textarea.form-control-lg {
     border-left-width: var(--bs-list-group-border-width);
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .list-group-horizontal-lg {
     flex-direction: row;
   }
@@ -5275,7 +5241,7 @@ textarea.form-control-lg {
     --bs-modal-width: 300px;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .modal-lg,
   .modal-xl {
     --bs-modal-width: 800px;
@@ -5325,7 +5291,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 784.98px) {
   .modal-fullscreen-md-down {
     width: 100vw;
     max-width: none;
@@ -5345,7 +5311,7 @@ textarea.form-control-lg {
     overflow-y: auto;
   }
 }
-@media (max-width: 1023.98px) {
+@media (max-width: 1040.98px) {
   .modal-fullscreen-lg-down {
     width: 100vw;
     max-width: none;
@@ -6005,7 +5971,7 @@ textarea.form-control-lg {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 784.98px) {
   .offcanvas-md {
     position: fixed;
     bottom: 0;
@@ -6021,12 +5987,12 @@ textarea.form-control-lg {
     transition: var(--bs-offcanvas-transition);
   }
 }
-@media (max-width: 767.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 784.98px) and (prefers-reduced-motion: reduce) {
   .offcanvas-md {
     transition: none;
   }
 }
-@media (max-width: 767.98px) {
+@media (max-width: 784.98px) {
   .offcanvas-md.offcanvas-start {
     top: 0;
     left: 0;
@@ -6065,7 +6031,7 @@ textarea.form-control-lg {
     visibility: visible;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .offcanvas-md {
     --bs-offcanvas-height: auto;
     --bs-offcanvas-border-width: 0;
@@ -6083,7 +6049,7 @@ textarea.form-control-lg {
   }
 }
 
-@media (max-width: 1023.98px) {
+@media (max-width: 1040.98px) {
   .offcanvas-lg {
     position: fixed;
     bottom: 0;
@@ -6099,12 +6065,12 @@ textarea.form-control-lg {
     transition: var(--bs-offcanvas-transition);
   }
 }
-@media (max-width: 1023.98px) and (prefers-reduced-motion: reduce) {
+@media (max-width: 1040.98px) and (prefers-reduced-motion: reduce) {
   .offcanvas-lg {
     transition: none;
   }
 }
-@media (max-width: 1023.98px) {
+@media (max-width: 1040.98px) {
   .offcanvas-lg.offcanvas-start {
     top: 0;
     left: 0;
@@ -6143,7 +6109,7 @@ textarea.form-control-lg {
     visibility: visible;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .offcanvas-lg {
     --bs-offcanvas-height: auto;
     --bs-offcanvas-border-width: 0;
@@ -6608,7 +6574,7 @@ textarea.form-control-lg {
     z-index: 1020;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .sticky-md-top {
     position: sticky;
     top: 0;
@@ -6620,7 +6586,7 @@ textarea.form-control-lg {
     z-index: 1020;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .sticky-lg-top {
     position: sticky;
     top: 0;
@@ -9221,7 +9187,7 @@ textarea.form-control-lg {
     text-align: center !important;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 785px) {
   .float-md-start {
     float: left !important;
   }
@@ -9771,7 +9737,7 @@ textarea.form-control-lg {
     text-align: center !important;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1041px) {
   .float-lg-start {
     float: left !important;
   }
