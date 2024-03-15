@@ -1,5 +1,5 @@
 // I have added the same 9 images 3 times due to not changing the purpose of this assignment
-const urlList = [
+const images = [
   "https://acre-image-collections.s3.amazonaws.com/image-6578722caea701702392364_medium.jpg",
   "https://acre-images.s3.amazonaws.com/image-5ac62b9e561041522936734_medium.jpeg",
   "https://acre-images.s3.amazonaws.com/image-5acac631504581523238449_medium.jpeg",
@@ -29,104 +29,28 @@ const urlList = [
   "https://acre-images.s3.amazonaws.com/image-5b01cdf4b2e9a1526844916.jpg",
 ];
 
-let itemsPerRow;
-let newItemsPerRow;
+// Function to add images to the row div
+function addImgs() {
+  images.forEach((img, index) => {
+    const imgDiv = $("<div>").addClass("img-div ");
 
-// Function to create the rows and images
-function create() {
-  // The loop is for the creation of rows
-  let index = 0;
-  itemsPerRow = calculateItemsPerRow();
-  for (i = 0; i < urlList.length / itemsPerRow; i++) {
-    const rowDiv = $("<div>")
-      .addClass("row")
-      .attr("id", `row-${i + 1}`);
-    $(".container-fluid").append(rowDiv);
+    const checkbox = $("<input>")
+      .attr("type", "checkbox")
+      .attr("id", index + 1); // Unique ID for each checkbox
 
-    for (j = 0; j < itemsPerRow; j++) {
-      const imgDiv = $("<div>")
-        .addClass("img-div col-sm-12 col-md-6 col-lg-3 col-xl")
-        .appendTo(rowDiv);
+    const label = $("<label>")
+      .attr("for", index + 1) // Match the ID of the checkbox
+      .attr("data-bgimage", `${img}`); // Set data for lazy loading
 
-      // adjust last row img for 5 columns
-      if (itemsPerRow == 5) {
-        $(imgDiv).css("width", "20%").css("flex", "0 0 auto");
-      }
+    imgDiv.append(checkbox, label);
 
-      const checkbox = $("<input>")
-        .attr("type", "checkbox")
-        .attr("id", index + 1); // Unique ID for each checkbox
-
-      const label = $("<label>")
-        .attr("for", index + 1) // Match the ID of the checkbox
-        .attr("data-bgimage", `${urlList[i * itemsPerRow + j]}`); // Set background image
-
-      imgDiv.append(checkbox, label);
-
-      // Append the image box to the container
-      $(`#row-${i + 1}`).append(imgDiv);
-      index++;
-      // Check that there are images left to add
-      if (i * itemsPerRow + j + 2 > urlList.length) {
-        return;
-      }
-    }
-  }
-}
-
-create();
-
-function calculateItemsPerRow() {
-  const screenWidth = $(window).width();
-  if (screenWidth >= 1400) {
-    return 5; // XLarge screens
-  } else if (screenWidth >= 1024) {
-    return 4; // Large screens
-  } else if (screenWidth >= 768) {
-    return 2; // Tablet screens
-  } else {
-    return 1; // Phone screens
-  }
-}
-
-// Add rule to not overstretch imgs on the last row
-function adjustLastRowImg(imgDiv) {
-  if (itemsPerRow == 5) {
-    $(imgDiv).css("width", "20%").css("flex", "0 0 auto");
-  } else {
-    $(imgDiv).css("width", "").css("flex", "");
-  }
-}
-
-// Add an event listener for window resize
-window.addEventListener("resize", function (event) {
-  newItemsPerRow = calculateItemsPerRow();
-  if (itemsPerRow !== newItemsPerRow) {
-    organizeDivsIntoRows();
-    itemsPerRow = newItemsPerRow; // Update the value
-  }
-});
-
-function organizeDivsIntoRows() {
-  const imgDivs = $(".img-div"); // Select all existing img-divs
-  $(".container-fluid").empty();
-  let currentRow;
-  imgDivs.each(function (index, imgDiv) {
-    if (index % newItemsPerRow === 0 || index == 0) {
-      // Start a new row
-      currentRow = $("<div>").addClass("row").appendTo($(".container-fluid"));
-    }
-    adjustLastRowImg(imgDiv); // adjust last row img for 5 columns
-    if (newItemsPerRow == 5) {
-      $(imgDiv).css("width", "20%").css("flex", "0 0 auto");
-    } else if (newItemsPerRow == 4 && itemsPerRow == 5) {
-      $(imgDiv).css("width", "").css("flex", "");
-    }
-    $(currentRow).append(imgDiv); // Append the div to the current row
+    $(`.row`).append(imgDiv); // Append the image box to the row
   });
 }
 
-// Check for IntersectionObserver support
+addImgs();
+
+// Check for IntersectionObserver support with html5 has
 if ("IntersectionObserver" in window) {
   document.addEventListener("DOMContentLoaded", function () {
     function handleIntersection(entries) {
@@ -143,7 +67,7 @@ if ("IntersectionObserver" in window) {
 
     const labels = document.querySelectorAll(".img-div > label");
     const observer = new IntersectionObserver(handleIntersection, {
-      rootMargin: "100px",
+      rootMargin: "100px", // rootMargin was added to have the img ready by the time we scroll to it
     });
     labels.forEach((imgBox) => observer.observe(imgBox));
   });
