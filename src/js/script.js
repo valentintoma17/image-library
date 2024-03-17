@@ -30,7 +30,7 @@ const images = [
 ];
 
 // Function to add images to the row div
-function addImgs() {
+function addImgDivs() {
   images.forEach((img, index) => {
     const imgDiv = $("<div>").addClass("img-div ");
 
@@ -48,7 +48,7 @@ function addImgs() {
   });
 }
 
-addImgs();
+document.addEventListener("DOMContentLoaded", addImgDivs);
 
 // Check for IntersectionObserver support with html5 has
 if ("IntersectionObserver" in window) {
@@ -72,9 +72,31 @@ if ("IntersectionObserver" in window) {
     labels.forEach((imgBox) => observer.observe(imgBox));
   });
 } else {
-  // No interaction support? Load all background images automatically
-  const labels = document.querySelectorAll(".img-div > label");
-  labels.forEach((img) => {
-    img.style.backgroundImage = "url('" + img.dataset.bgimage + "')";
-  });
+  // No interaction support? Use implemented js lazy loader
+  let lazyloadThrottleTimeout;
+  const lazyloadImages = document.querySelectorAll(".img-div > label");
+  function lazyload() {
+    if (lazyloadThrottleTimeout) {
+      clearTimeout(lazyloadThrottleTimeout);
+    }
+
+    lazyloadThrottleTimeout = setTimeout(function () {
+      var scrollTop = window.scrollY;
+      lazyloadImages.forEach(function (img) {
+        if (img.offsetTop < window.innerHeight + scrollTop + 100) {
+          img.style.backgroundImage = "url('" + img.dataset.bgimage + "')";
+        }
+      });
+      if (lazyloadImages.length == 0) {
+        document.removeEventListener("scroll", lazyload);
+        window.removeEventListener("resize", lazyload);
+        window.removeEventListener("orientationChange", lazyload);
+      }
+    }, 20);
+  }
+
+  document.addEventListener("DOMContentLoaded", lazyload);
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
 }
